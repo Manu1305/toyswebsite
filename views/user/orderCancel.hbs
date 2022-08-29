@@ -1,0 +1,89 @@
+<link rel="stylesheet" type="text/css" href="userAssets/css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!--owl slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <!-- font awesome style -->
+  <link href="userAssets/css/font-awesome.min.css" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="userAssets/css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="userAssets/css/responsive.css" rel="stylesheet" />
+
+
+<form action="/cancelOrder/{{order._id}}" method="post">
+<section style="margin-left: 175px;">
+  <div style="height: 200px; width:100%;"></div>
+<div class="container" style="margin-left: -119px;">
+    <div class="row">
+        <input type="text" value="{{order._id}}" name="proId" hidden>
+    </div>
+<table class="table " id="productsTable">
+  <thead>
+    <tr>
+      
+      <th scope="col">NAME</th>
+      <th scope="col">ADDRESS</th>
+      <th scope="col">EMAIL</th>
+      <th scope="col">PHONE</th>
+      <th scope="col">status</th>
+     
+      <th scope="col">ACTION</th>
+      
+      {{!-- <th scope="col">imge</th>
+      <th scope="col">options</th> --}}
+    </tr>
+  </thead>
+  <tbody>     <tr>
+      
+      <td>{{order.name}}</td>
+      <td> {{order.address}} </td>
+      <td> {{order.email}} </td>
+      <td>{{order.emai}}</td>
+      <td>{{order.status}}</td>
+     
+      {{!-- <label class="hidden" for="">STATUS</label>
+        <input type="text" name="status" class="form-control hidden" value="shipped"> --}}
+        {{!-- <td><div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" style="width: 10px;" name="status" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+  o
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</div></td> --}}
+
+<td>
+      
+      <button type="submit" name="status" value="cancel" class="btn btn-success mt-4">cancel</button>
+      </td>
+    
+      
+        
+ 
+
+      </td>
+
+      {{!-- <td ><img style="width:;70px;height:50px" src="/product-images/{{this._id}}.jpg"</td>
+      <td>
+         <a href="/admin/edit-product/{{this._id}}"class="btn btn-primary">Edit</a>
+        <a href="/admin/delete-product/{{this._id}}"class="btn btn-danger" onclick="return confirm ('are you really want to delete{{this.name}} ? ')">Delete</a> --}}
+     
+      {{!-- </td> --}}
+      {{!-- <td> <a href="/view-order-products/{{this._id}}"  class="btn btn-primary">VIEW PRODUCTS</a></td> --}}
+     
+
+
+    </tr>
+   
+    
+  
+</table>
+</div>
+</section></form>

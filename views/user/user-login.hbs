@@ -1,0 +1,102 @@
+<head>
+<script src="https://kit.fontawesome.com/bdd3a18581.js" crossorigin="anonymous"></script>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Mouse+Memoirs&display=swap" rel="stylesheet">
+
+<style>
+h1{
+  font-family: 'Mouse Memoirs', sans-serif;
+}
+.pass{
+  font-family: 'Bad Script', cursive;
+
+}
+.pass-word{
+  border-color: rgb(9, 3, 0);  border-style: solid;
+}
+.form-group {
+  border: 1px solid #ced4da;
+  padding: 5px;
+  border-radius: 6px;
+  width: auto;
+}
+.form-group:focus {
+  color: #212529;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+}
+.form-group input {
+  display: inline-block;
+  width: auto;
+  border: none;
+}
+.form-group input:focus {
+  box-shadow: none;
+}
+
+
+</style>
+</head>
+
+<section class="vh-100" style="background-color: rgb(237, 253, 8);"">
+  <div class="container py-5 h-100">
+    <div class="row d-flex align-items-center justify-content-center h-100">
+      <div class="col-md-8 col-lg-7 col-xl-6">
+       <img width="560" height="315" src="http://24.media.tumblr.com/76656c275a2ecc49cfe82675e954b138/tumblr_mho62cS6Aw1rjeb8co1_500.gif" autoplay; clipboard-write; encrypted-media;" scrolling="no"  >
+        {{!-- <img src="https://img.freepik.com/premium-photo/kids-toys-white-yellow-background_98438-271.jpg" --}}
+          {{!-- class="img-fluid" alt="Phone image"> --}}
+      </div>
+      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+        <form action="/login" method="post">
+        {{#if loginerr}}
+           
+            <div class="error" style="background-color:black;"> <p class="text-danger">INVALID PASSWORD OR USERNAME</p></div>
+          {{/if}}
+        
+          <h1 class="my-4">a life full of Games</h4>
+          <!-- Email input -->
+          <label class="form-label pass" for="form1Example13">Email address</label>
+          <div class="form-outline mb-4 pass-word">
+            <input type="email" id="form1Example13" name="Email" class="form-control form-control-lg" placeholder="Type your email here......😊" />
+            
+          </div>
+
+          <!-- Password input -->
+           <label class="form-label  pass" for="form1Example23" >Password</label>
+          <div class="form-outline mb-4 pass-word">
+            <input type="Password" id="form1Example23" name="Password" class="form-control form-control-lg" placeholder="Your secret key.....🔑" />
+           
+          </div>
+
+          <div class="d-flex justify-content-around align-items-center mb-4">
+            <!-- Checkbox -->
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
+              <label class="form-check-label" for="form1Example3"> Remember me </label>
+            </div>
+            <a href="#!">Forgot password?</a>
+          </div>
+   
+           
+
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Log in</button>
+
+          <div class="divider d-flex align-items-center my-4">
+            <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
+          </div>
+
+          
+          <p class="text-center text-muted mt-5 mb-0">Create New Account? <a href="/signup"
+                    class="fw-bold text-body"><u><img src="https://media2.giphy.com/media/hriXp9qW2pBcyMlTTB/giphy.gif?cid=6c09b952ibhouixjwteqg6n1oetux7nzys23e5tq2o35tl2y&rid=giphy.gif&ct=s" style="height: 55px;"</u></a></p>  
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
