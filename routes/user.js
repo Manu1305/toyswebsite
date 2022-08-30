@@ -163,9 +163,14 @@ router.get("/productdetails", async function (req, res, next) {
 });
 
 router.get("/game", async function (req, res) {
+  if (req.session.loggedIn) {
   cartCount = await userHelpers.getCartCount(req.session.user._id);
   let user = req.session.user;
-  res.render("user/game", { cartCount, user });
+  res.render("user/game", { cartCount, user });}
+  else {
+    req.session.loginerr = true;
+    res.redirect("/login");
+  }
 });
 
 router.post("/remove-from-cart", (req, res, next) => {
