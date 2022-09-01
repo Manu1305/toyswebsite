@@ -4,7 +4,7 @@
     <div class="row">
         <a href="/admin/addCoupon" class="btn btn-success ">add New Coupon</a>
     </div>
-<table class="table-responsive" style="padding: 50px;">
+<table class="table-responsive" id="productsTable" style="padding: 50px;">
   <thead>
     <tr>
         <th scope="col">NO.</th>
@@ -31,3 +31,18 @@
   </tbody>
 </table></div>
 </section>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+  
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+<script>
+    $(document).ready(function () {
+
+
+        $('#productsTable').wrap('<div id="hide" style="display:none"/>');
+
+        $('#hide').css('display', 'block');
+    });
+
+
+    var table = $('#productsTable').DataTable();
+</script>

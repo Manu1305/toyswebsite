@@ -331,10 +331,12 @@ a {
 	<div class="menu menu--score">
 		<h1>Game Over</h1>
 		<h2>Your Score:</h2>
+		
 		<div class="final-score-lbl"></div>
 		<div class="high-score-lbl"></div>
 		<button type="button" class="play-again-btn">PLAY AGAIN</button>
 		<button type="button" class="menu-btn--score">MAIN MENU</button>
+		<a href="/"><button type="button" class="menu-btn--score">HOME PAGE</button></a>
 	</div>
 </div>
 <script>
@@ -1588,6 +1590,7 @@ function renderScoreHud() {
 		cubeCountNode.style.opacity = 0.65 ;
 	}
 	cubeCountNode.innerText = `CUBES SMASHED: ${state.game.cubeCount}`;
+	
 }
 
 renderScoreHud();
