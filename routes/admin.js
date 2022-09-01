@@ -77,9 +77,9 @@ productHelper.deleteProduct(proId).then((respone)=>{
   res.redirect('/admin')
 })
 })
-router.get('/edit-product/:id',async(req,res)=>{
+router.get('/edit-product',async(req,res)=>{
   
-  let proId=req.params.id
+  let proId=req.query.id
   let category=categoryHelper.viewCategory()
  productHelper.getProductDetails(proId).then((product)=>{
   
@@ -172,6 +172,17 @@ router.get('/delete-user/:id', (req, res) => {
     res.redirect('/admin/view-users')
   })
 }),
+
+router.get('/block/:id',(req,res)=>{
+  userHelpers.userblock(req.params.id).then(()=>{
+    res.redirect('/admin/view-users')
+})
+})
+router.get('/unblock/:id',(req,res)=>{
+  userHelpers.userunblock(req.params.id).then(()=>{
+    res.redirect('/admin/view-users')
+})
+})
 
 
 
@@ -279,7 +290,49 @@ router.get('/viewBanners', function(req, res, next) {
        })})
     
 
+       router.get('/coupon-management', ((req, res) => {
+        productHelper.viewCoupon().then((coupon) => {
+          
+          if (req.session.adminLoggedIn) {
+            res.render('admin/coupon', { coupon,admin:true })
+          } else {
+            res.redirect('/coupon-management')
+          }
+        })
+      }))
 
+      router.get('/addCoupon', ((req, res) => {
+        productHelper.viewCoupon().then((coupon) => {
+        if (req.session.adminLoggedIn) {
+          let errmess = req.session.errmess
+          
+          res.render('admin/add-coupon', { errmess,admin:true})
+          req.session.errmess = false
+        } else {
+          res.redirect('/admin')
+        }
+      
+      })})),
+      router.post('/addCoupon', (req,res) => {
+        if (req.session.adminLoggedIn) {
+          productHelper.addCoupon(req.body).then((coupon) => {
+            res.redirect('/admin/coupon-management')
+          }).catch((err) => {
+            req.session.errmess = err;
+            
+            res.redirect('/admin/coupon')
+            
+          })
+        }
+      })
+      router.get('/deleteCoupon/:id', (req, res) => {
+        if (req.session.adminLoggedIn) {
+          let proId=req.params.id
+          productHelper.deleteCoupon(req.params.id).then((response) => {
+            res.redirect('/admin/coupon-management')
+          })
+        }
+      }),
 
 
 

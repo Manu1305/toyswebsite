@@ -12,6 +12,8 @@ var instance = new Razorpay({
 
 module.exports = {
   doSignup: (userData) => {
+    userData.isBlocked=false
+    let respone={}
     return new Promise(async (resolve, reject) => {
       userData.Password = await bcrypt.hash(userData.Password, 10);
       db.get()
@@ -25,6 +27,7 @@ module.exports = {
   },
   doLogin: (userData) => {
     return new Promise(async (resolve, reject) => {
+
       let loginStatus = false;
       let response = {};
       let user = await db
@@ -33,19 +36,26 @@ module.exports = {
         .findOne({ email: userData.Email });
       console.log(user);
       if (user) {
+        if(!user.isBlocked){
         bcrypt.compare(userData.Password, user.Password).then((status) => {
           if (status) {
+          
             console.log("true login");
             response.user = user;
             response.status = true;
             resolve(response);
+            
           } else {
             resolve({ status: false });
           }
         });
+      }else {
+        reject("you are blocked");
+      }
       } else {
         resolve({ status: false });
       }
+   
     });
   },
   addToCart: (proId, userId) => {
@@ -285,11 +295,13 @@ module.exports = {
       let status = order["payment-method"] === "COD" ? "placed" : "pending";
       let orderObj = {
         
+        deliveryDetails:{
           name:order.name,
           mobile: order.phone,
           address: order.address,
           email: order.email,
           pin:order.pincode
+        }
         ,
         userId: objectId(order.userId),
         paymentMethod: order["payment-method"],
@@ -596,4 +608,35 @@ module.exports = {
         });
     });
   },
+
+  userblock:(userId)=>{
+    return new Promise((resolve, reject) => {
+      db.get().collection(collection.USER_COLLECTION)
+      .updateOne({_id:objectId(userId)},
+      {
+        $set:{isBlocked:true}
+      }
+      )
+      resolve()
+  
+    })
+  
+  },
+  userunblock:(userId)=>{
+  return new Promise((resolve, reject) => {
+    db.get().collection(collection.USER_COLLECTION)
+    .updateOne({_id:objectId(userId)},
+    {
+      $set:{isBlocked:false}
+    }
+    )
+    resolve()
+  
+  })
+  
+  },
+
+
+
+
 };

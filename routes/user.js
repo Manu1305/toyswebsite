@@ -60,7 +60,10 @@ router.post("/login", function (req, res) {
       req.session.loginerr = true;
       res.redirect("/login");
     }
-  });
+  }).catch((err) => {
+    console.log(err);
+    res.redirect('back')
+  })
 });
 router.post("/signup", function (req, res) {
   req.session.userData = req.body;
@@ -178,25 +181,33 @@ router.post("/remove-from-cart", (req, res, next) => {
     res.json(response);
   });
 }),
-  router.get("/payment", async function (req, res) {
-    total = null;
-    if (req.session.loggedIn) {
-      let total = await userHelpers.getTotalAmount(req.session.user._id);
-      let user = req.session.user;
-      console.log(user);
-      cartCount = await userHelpers.getCartCount(req.session.user._id);
-      let address = await userHelpers.getAddressDetails(req.session.user._id);
-      res.render("user/payment", { user, cartCount, total, address });
-    } else {
-      req.session.loginerr = true;
-      res.redirect("/login");
-    }
-  }),
+router.get("/payment", async function (req, res) {
+  total = null;
+  discount= null
+  if (req.session.loggedIn) {
+     total = await userHelpers.getTotalAmount(req.session.user._id);
+    let coupon=  req.session.coupon
+     discount = req.session.discount
+    let user = req.session.user;
+    
+    cartCount = await userHelpers.getCartCount(req.session.user._id);
+    let address = await userHelpers.getAddressDetails(req.session.user._id);
+    res.render("user/payment", { user, cartCount, total, address,coupon,discount });
+  } else {
+    req.session.loginerr = true;
+    res.redirect("/login");
+  }
+}),
   router.post("/payment", async (req, res) => {
-
+    let totalPrice=0
     console.log(req.body,'oooooo');
     let products = await userHelpers.getCartProductList(req.body.userId);
-    let totalPrice = await userHelpers.getTotalAmount(req.body.userId);
+    if(req.session.discount){
+      totalPrice= req.session.discount
+    }else{
+     totalPrice = await userHelpers.getTotalAmount(req.body.userId);
+    
+    }
 
     userHelpers.placeOrder(req.body, products, totalPrice).then((orderId) => {
       if (req.body["payment-method"] === "COD") {
@@ -207,6 +218,8 @@ router.post("/remove-from-cart", (req, res, next) => {
         });
       }
     });
+    req.session.coupon=null;
+        req.session.discount=null;
     console.log(req.body);
   });
 
@@ -372,8 +385,19 @@ router.post("/edit-profile/:id", (req, res) => {
        res.redirect("/orders")
       })
      }),
-
-  
+     router.post('/apply-coupon',(req,res)=>{
+      console.log(req.body);
+      if (req.session.loggedIn) {
+        productHelper.applyCoupon(req.body,req.session.user._id).then((response)=>{
+          if(response.status){
+            req.session.coupon=response.coupon;
+            req.session.discount=response.discountTotal
+          }
+          res.json(response)
+        })
+      }
+    })
+      
      
     
 

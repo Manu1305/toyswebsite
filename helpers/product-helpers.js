@@ -3,6 +3,7 @@ var db=  require('../config/connection')
 var collection=require('../config/collection')
 const collections = require('../config/collection')
 const { ObjectID } = require('bson')
+const userHelpers = require('./user-helpers')
 var ObjectId=require('mongodb').ObjectId
 module.exports={
 
@@ -124,9 +125,68 @@ getOrderDetails:(proId)=>{
     })
 
 }
+,
+viewCoupon:()=>{
+    return new Promise(async (resolve, reject) => {
+        let coupon = await db.get().collection(collection.COUPON_COLLECTION).find().toArray()
+        resolve(coupon)
+    })
+},
 
+addCoupon: (coupon) => {
+    return new Promise(async (resolve, reject) => {
+        coupon.user=[]
+        coupon.discount=parseInt(coupon.discount)
+            db.get().collection(collection.COUPON_COLLECTION).insertOne({coupon}).then(() => {
+                resolve()
+            })
+        
+    })
+}, 
 
+deleteCoupon:(catId)=>{
+    return new Promise ((resolve,reject)=>{
+       db.get().collection(collection.COUPON_COLLECTION).deleteOne({_id:ObjectId(catId)}).then((response)=>{
+        resolve(response)
+       })
+    })
+},
 
+applyCoupon:(coupon,userId)=>{
+    return new Promise(async(resolve,reject)=>{
+        console.log(coupon);
+        let response={};
+        response.discount=0;
+        let couponData=await db.get().collection(collection.COUPON_COLLECTION).findOne({'coupon.coupon':coupon.coupon})
+        console.log("coupon Data:  "+couponData);
+        if(couponData){
+            let userExit= await db.get().collection(collection.COUPON_COLLECTION).findOne({'coupon.coupon':coupon.coupon,user:{
+                $in:[ObjectID(userId)]
+                
+            }})
+            if(userExit){
+                response.status=false;
+                console.log('exxxxx');
+                resolve(response)
+            }
+            else{
+                response.status=true;
+                response.coupon=couponData.coupon;
+                userHelpers.getTotalAmount(userId).then((total)=>{
+                    console.log("total:   "+total);
+                    response.discountTotal=total-(total*couponData.coupon.discount/100)
+                    response.discountPrice=(total*couponData.coupon.discount)/100
+                    resolve(response)
+                    console.log(response);
+                })
+            }
+        }else{
+            response.status=false;
+            console.log('hhhhhhhhhh');
+            resolve(response)
+        }
+    })
+}
 
 
 

@@ -19,12 +19,21 @@
                     <td>{{this.name}} </td>
                     <td>{{this.email}} </td>
                      <td>{{this.number}} </td>
+                     <td>
+       {{#if isBlocked}}
+            <a href="/admin/unblock/{{this._id}}" class="btn btn-primary">Unblock</a>
+            
+            {{else}}
+            <a href="/admin/block/{{this._id}}" class="btn btn-danger">Block</a>
+      
+        </td>
+          {{/if}}
                      
-                    <td>
+                    {{!-- <td>
                         {{!-- <a href="/admin/edit-user/{{this._id}}" class="btn btn-primary">Edit</a> --}}
-                        <a href="/admin/delete-user/{{this._id}}" class="btn btn-danger"
-                            onclick="return confirm('Are you sure to delete {{this.Name}}?')">Delete</a>
-                    </td>
+                        {{!-- <a href="/admin/delete-user/{{this._id}}" class="btn btn-danger"
+                            onclick="return confirm('Are you sure to delete {{this.Name}}?')">Delete</a> --}}
+                    {{!-- </td>  --}}
                 </tr>
                 {{/each}}
             </tbody>
