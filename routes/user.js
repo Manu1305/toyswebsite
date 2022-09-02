@@ -172,6 +172,13 @@ router.get("/game",  function (req, res) {
   
 });
 
+router.get("/game1",  function (req, res) {
+ 
+  
+  res.render("user/game1",{layout:'gameLayout'});
+  
+});
+
 router.post("/remove-from-cart", (req, res, next) => {
   userHelpers.removeCartProduct(req.body).then((response) => {
     res.json(response);
