@@ -1,22 +1,19 @@
-
 <link rel="stylesheet" type="text/css" href="userAssets/css/bootstrap.css" />
 
-  <!-- fonts style -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+<!-- fonts style -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
 
-  <!--owl slider stylesheet -->
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+<!--owl slider stylesheet -->
+<link rel="stylesheet" type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 
-  <!-- font awesome style -->
-  <link href="userAssets/css/font-awesome.min.css" rel="stylesheet" />
+<!-- font awesome style -->
+<link href="userAssets/css/font-awesome.min.css" rel="stylesheet" />
 
-  <!-- Custom styles for this template -->
-  <link href="userAssets/css/style.css" rel="stylesheet" />
-  <!-- responsive style -->
-  <link href="userAssets/css/responsive.css" rel="stylesheet" />
-
-
-
+<!-- Custom styles for this template -->
+<link href="userAssets/css/style.css" rel="stylesheet" />
+<!-- responsive style -->
+<link href="userAssets/css/responsive.css" rel="stylesheet" />
 
 
 
@@ -31,64 +28,45 @@
 
 
 
-<div class="row" >
+
+
+
+<div class="row">
   <div class="col-md-8 mb-4">
     <div class="card mb-4">
       <div class="card-header py-3">
         <h5 class="mb-0">Biling details</h5>
       </div>
       <div class="card-body">
+        </div> <a href='/addAddress'> <button >ADD NEW ADDRESS</button></a> 
+        
         <form action="" id="checkout-form" method="post">
+                       <input type="hidden" name="userId" value="{{user._id}}">
+
           <!-- 2 column grid layout with text inputs for the first and last names -->
-          <div class="row mb-4">
-            <div class="col">
-              <div class="form-outline">
-                {{!-- <input type="text" name="name" id="form7Example1" class="form-control" /> --}}
-                
-                <label class="form-label" for="form7Example1">First name</label>
- <input type="text" name="name" id="form7Example1" class="form-control" />
-
-
-
-                <input type="text" id="form7Example1" class="form-control" name="userId" value="{{user._id}}" hidden />
+          <div class="col-md-6">{{#each address}}
+             <input type="radio" name="address"   value="{{this.address}}" {{#if @first}} checked {{/if}}>
+            <div class="bg-white card addresses-item mb-4 border border-primary shadow">
+              <div class="gold-members p-4">
+                <div class="media">
+                  <div class="mr-3"><i class="icofont-ui-home icofont-3x"></i></div>
+                  <div class="media-body">
+                    <h6 class="mb-1 text-secondary" name="name">{{this.name}}</h6>
+                    <p class="text-black" name="address">{{this.address}}</p>
+                    <p class="text-black" name="pincode">pin-{{this.pin}}</p>
+                    <p class="text-black" name="email">mail-{{this.email}}</p>
+                    <p class="mb-0 text-black font-weight-bold"><a class="text-primary mr-3" data-toggle="modal"
+                        data-target="#add-address-modal" href="#"><i class="icofont-ui-edit"></i> </a> <a
+                        class="text-danger" data-toggle="modal" data-target="#delete-address-modal" <a
+                        href="/deleteAddress/{{this._id}}" class="btn btn-danger"
+                        onclick="return confirm ('are you really want to delete{{this.name}} ? ')">Delete</a>
+                  </div>
+                </div>
               </div>
             </div>
-          
+            {{/each}}
           </div>
 
-          <!-- Text input -->
-          
-
-          <!-- Text input -->
-         <select style="width:920px; height:50px;" id="product_categorie" name="address" class="text-success"
-                    data-container="body">
-                    <option style="text-primary; text-align: center;"  disabled selected value><H2>ADDRESSES</H2></option>
-                    {{#each address}}
-                    <option   value="{{this.address}}">{{this.address}}</option>
-                    {{/each}}
-                </select>
-                <a href="/addAddress">➕</a>
-
-          <!-- Email input -->
-          <div class="form-outline mb-4">
-            <label class="form-label" for="form7Example5">Email</label>
-            <input type="email" id="form7Example5" name="email" value="{{this.email}}" class="form-control" />
-            
-          </div>
-
-          <!-- Number input -->
-          <div class="form-outline mb-4">
-            <label class="form-label" for="form7Example6">Phone</label>
-            <input type="number" id="form7Example6" name="phone" class="form-control" />
-            
-          </div>
-
-          <!-- Message input -->
-          <div class="form-outline mb-4">
-             <label class="form-label" for="form7Example7">Additional information</label>
-            <textarea class="form-control" id="form7Example7" rows="4"></textarea>
-           
-          </div>
 
           <!-- Checkbox -->
           {{!-- <div class="form-check d-flex justify-content-center mb-2">
@@ -97,8 +75,7 @@
               Create an account?
             </label>
           </div>
-        --}}
-      
+          --}}
 
   <div class="col-md-4 mb-4">
     <div class="card mb-4">

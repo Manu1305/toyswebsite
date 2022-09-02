@@ -182,6 +182,9 @@ router.get("/payment", async function (req, res) {
   discount= null
   if (req.session.loggedIn) {
      total = await userHelpers.getTotalAmount(req.session.user._id);
+     if (total!=0){
+      
+     
     let coupon=  req.session.coupon
      discount = req.session.discount
     let user = req.session.user;
@@ -190,6 +193,10 @@ router.get("/payment", async function (req, res) {
     let address = await userHelpers.getAddressDetails(req.session.user._id);
     res.render("user/payment", { user, cartCount, total, address,coupon,discount });
   } else {
+    res.redirect("/cart");
+  }
+
+}else {
     req.session.loginerr = true;
     res.redirect("/login");
   }
@@ -297,10 +304,11 @@ router.get("/wishlist", async (req, res) => {
   }
 });
 
-router.get("/userProfile", function (req, res, next) {
+router.get("/userProfile", async function(req, res, next) {
   if (req.session.loggedIn) {
-    let userData = req.session.user;
-    res.render("user/userProfile", { userData });
+    let user = req.session.user;
+    cartCount = await userHelpers.getCartCount(req.session.user._id);
+    res.render("user/userProfile", { user ,cartCount});
   } else {
     req.session.loginerr = true;
     res.redirect("/login");
