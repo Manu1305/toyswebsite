@@ -33,7 +33,9 @@
       <th scope="col">PHONE</th>
       <th scope="col">status</th>
       <th scope="col">amount</th>
+        <th scope="col">view product</th>
       <th scope="col">update</th>
+    
       
       {{!-- <th scope="col">imge</th>
       <th scope="col">options</th> --}}
@@ -52,6 +54,7 @@
 
       {{!-- <label class="hidden" for="">STATUS</label>
         <input type="text" name="status" class="form-control hidden" value="shipped"> --}}
+         <td> <a href="/admin/view-order-products/{{this._id}}"  class="btn btn-primary">VIEW PRODUCTS</a></td>
         <td> <a href="/admin/orderDetails?id={{this._id}}"class="btn btn-primary">action</a></td>
       
   

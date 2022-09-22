@@ -331,11 +331,25 @@ router.get('/viewBanners', function(req, res, next) {
           productHelper.deleteCoupon(req.params.id).then((response) => {
             res.redirect('/admin/coupon-management')
           })
-        }
+        } else{res.render('admin/admin-login', { adminLoggErr: req.session.adminLoggErr,layout:'login-layout' });
+        req.session.adminLoggErr = false;}
       }),
 
 
-
+      router.get("/view-order-products/:id", async (req, res) => {
+        console.log(req.params.id, "ghjhghghj");
+        if (req.session.adminLoggedIn) {
+          userHelpers.getOrderProducts(req.params.id).then((product) => {
+           
+            res.render("user/view-order-products", {
+             admin:true,
+              product,
+            });
+          });
+        }  else{res.render('admin/admin-login', { adminLoggErr: req.session.adminLoggErr,layout:'login-layout' });
+        req.session.adminLoggErr = false;}
+      });
+      
 
 
 module.exports = router;
