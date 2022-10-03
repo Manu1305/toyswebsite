@@ -288,6 +288,13 @@ router.get("/add-to-wishlist/:id", (req, res) => {
   });
 });
 
+router.post("/remove-from-cart", (req, res, next) => {
+  userHelpers.removeCartProduct(req.body).then((response) => {
+    res.json(response);
+  });
+})
+
+
 router.post("/remove-from-wishlist", (req, res, next) => {
   userHelpers.removeWishListProduct(req.body).then((response) => {
     res.json(response);
@@ -409,7 +416,21 @@ router.post("/edit-profile/:id", (req, res) => {
       }
     })
       
-     
+    router.get("/invoice", (req, res) => {
+      if (req.session.loggedIn) {
+        res.render("user/invoice", { layout: "login-layout" });
+      } else {
+        req.session.loginerr = true;
+        res.redirect("/login");
+      }
+    }),
+    
+
+
+
+
+
+
     
 
 

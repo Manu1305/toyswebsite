@@ -18,7 +18,10 @@
 
 
 
-<style>.gradient-custom {
+<style>
+
+  
+  .gradient-custom {
 /* fallback for old browsers */
 background: #6a11cb;
 
@@ -40,6 +43,10 @@ background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 
           <div class="card-header py-3">
             <h5 class="mb-0">Wishlist</h5>
           </div>
+          <div>
+
+
+          </div>
           <div class="card-body">
             <!-- Single item -->
             {{#each products}}
@@ -49,9 +56,9 @@ background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 
                 <!-- Image -->
                 <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
                   <img src="/product-images/{{this.product._id}}.jpg"
-                    class="w-100" alt="Blue Jeans Jacket" />
+                    class="w-100" />
                   <a href="#!">
-                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+                    <div class="mask" style="background-color: rgba(81, 95, 76, 0.2)"></div>
                   </a>
                 </div>
                 <!-- Image -->
@@ -63,7 +70,7 @@ background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 
                
                 {{!-- <p>Color: blue</p>
                 <p>Size: M</p> --}}
-              <button type="button" class="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip" onclick="addToWishlist('{{this.product._id}}')"
+              <button type="button" class="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip" onclick="removeWishlist('{{this._id}}','{{this.product._id}}')"
                   title="Remove item">remove 
                   <i class="fas fa-trash"></i>
                 </button>
@@ -85,6 +92,7 @@ background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 
                 </p>
                 <!-- Price -->
                 <button onclick="addToCart('{{this._id}}')" class="btn btn-primary">Add to Cart</button>
+                
               </div>
             </div>{{/each}}
             <!-- Single item -->
@@ -232,11 +240,11 @@ background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 
 
  
 
-  function removeProduct(wishId,proId){
+  function removeWishlist(wishId,proId){
     $.ajax({
       url:'/remove-from-wishlist',
       data:{
-        cart:wishId,
+        wish:wishId,
       product:proId
       },
        method:'post',
@@ -249,7 +257,5 @@ background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 
     })
   }
   
-
-
 
 </script>

@@ -546,15 +546,20 @@ module.exports = {
     });
   },
 
-  removeWishListProduct: (proId) => {
+  removeWishListProduct: (details) => {
     return new Promise((resolve, reject) => {
       db.get()
         .collection(collection.WISHLIST_COLLECTION)
-        .deleteOne(
-          { _id: objectId(proId) }.then((response) => {
-            resolve(response);
-          })
-        );
+        .updateOne(
+          { _id: objectId(details.wish) },
+
+          {
+            $pull: { products: { item: objectId(details.product) } },
+          }
+        )
+        .then((response) => {
+          resolve(true);
+        });
     });
   },
   addAdrress: (address, userId, callback) => {

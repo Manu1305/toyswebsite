@@ -40,6 +40,16 @@
 
  <style>
  
+.fa-heart-o {
+  color: red;
+  cursor: pointer;
+}
+
+.fa-heart {
+  color: red;
+  cursor: pointer;
+}
+
 
 
 /*****************globals*************/
@@ -265,7 +275,7 @@ img {
                
 {{!-- <button  onclick="addToWishlist('{{products._id}}')" class="box-btn"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true">wishlist</span></button> --}}
              
-             <button class="like btn btn-default" onclick="addToWishlist('{{products._id}}')" type="button"><span class="fa fa-heart"></span></button>
+             <button class="like btn btn-default" onclick="addToWishlist('{{products._id}}')" type="button"><span id = heart><i class="fa fa-heart-o" aria-hidden="true" ></i> </span></button>
               {{!-- <button class="add-to-cart btn btn-default" type="button">Buy now</button> --}}
                
 							
@@ -317,6 +327,17 @@ $(function($) {
   });
 });
 
+$(document).ready(function(){
+  $("#heart").click(function(){
+    if($("#heart").hasClass("liked")){
+      $("#heart").html('<i class="fa fa-heart-o" aria-hidden="true"></i>');
+      $("#heart").removeClass("liked");
+    }else{
+      $("#heart").html('<i class="fa fa-heart" aria-hidden="true"></i>');
+      $("#heart").addClass("liked");
+    }
+  });
+});
 
 </script>
 <style>
