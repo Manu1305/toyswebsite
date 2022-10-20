@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:version='2' class='v2' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='https://www.google.com/2005/gml/b' xmlns:data='https://www.google.com/2005/gml/data' xmlns:expr='https://www.google.com/2005/gml/expr'> 
+  <head>
+    <meta charset="UTF-8" /> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <b:if cond='data:blog.isMobile'> 
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    <b:else/>      
+    </b:if> 
+    <b:include data='blog' name='all-head-content'/> 
+    <title><data:blog.pageTitle/></title>
+    <b:skin><![CDATA[/*
+-----------------------------------------------
+/////////// HTML THEME////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////TEMPLATE CREATED BY : FRINTON MADTHA////////////////////////////////////////////////////////////
+/////////////////////// DOWNLOAD FROM: www.FRINMASH.BLOGSPOT.com  //////////////////////////////////////////////////
+----------------------------------------------
+]]></b:skin>
+  </head>
+  
+  
+  <style>
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+body {
+  font-family: Open Sans;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url(https://cdn.mos.cms.futurecdn.net/4MLyNZ66GSMUp7z49Q8k3K.jpg);
+  background-size: cover;
+}
+
+.mainbox {
+  position: relative;
+  width: 500px;
+  height: 500px;
+}
+
+.mainbox:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: url(./arrow-bottom.png) no-repeat;
+  background-size: 5%;
+  left: 5%;
+  top: 48%;
+  transform: rotate(90deg);
+}
+
+.box {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 50%;
+  border: 10px solid #949090;
+  overflow: hidden;
+  transition: all ease-in-out 5s;
+  transform: rotate(90deg);
+}
+
+span {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  position: absolute;
+}
+
+.span1 {
+  clip-path: polygon(0 17%, 0 50%, 50% 50%);
+  background-color: green;
+}
+
+.span2 {
+  clip-path: polygon(0 17%, 30% 0, 50% 50%);
+  background-color: red;
+}
+
+.span3 {
+  clip-path: polygon(30% 0, 71% 0, 50% 50%);
+  background-color: blue;
+}
+
+.span4 {
+  clip-path: polygon(71% 0, 100% 18%, 50% 50%);
+  background-color: salmon;
+}
+
+.span5 {
+  clip-path: polygon(100% 18%, 100% 50%, 50% 50%);
+  background: #ff8300;
+}
+
+.box2 .span3 {
+  background-color: #00ff04;
+}
+
+.box2 {
+  width: 100%;
+  height: 100%;
+  transform: rotate(180deg);
+}
+
+.font {
+  color: white;
+  font-size: 20px;
+}
+
+.box1 .span1 b {
+  position: absolute;
+  top: 39%;
+  right: 60%;
+  transform: rotate(200deg);
+  text-align: center;
+}
+
+.box1 .span2 b {
+  position: absolute;
+  top: 25%;
+  right: 57%;
+  transform: rotate(-130deg);
+}
+
+.box1 .span3 b {
+  position: absolute;
+  top: 20%;
+  right: 36%;
+  transform: rotate(-90deg);
+}
+
+.box1 .span4 b {
+  position: absolute;
+  top: 25%;
+  right: 15%;
+  transform: rotate(-45deg);
+}
+
+.box1 .span5 b {
+  position: absolute;
+  top: 38%;
+  right: 10%;
+  transform: rotate(-15deg);
+  text-align: center;
+}
+
+.box2 .span1 b {
+  position: absolute;
+  top: 34%;
+  right: 70%;
+  transform: rotate(200deg);
+}
+
+.box2 .span2 b {
+  position: absolute;
+  top: 20%;
+  right: 60%;
+  transform: rotate(-130deg);
+  text-align: center;
+}
+
+.box2 .span3 b {
+  position: absolute;
+  top: 15%;
+  right: 40%;
+  transform: rotate(270deg);
+}
+
+.box2 .span4 b {
+  position: absolute;
+  top: 27%;
+  right: 20%;
+  transform: rotate(310deg);
+}
+
+.box2 .span5 b {
+  position: absolute;
+  top: 35%;
+  right: 10%;
+  transform: rotate(-20deg);
+  text-align: center;
+}
+
+.spin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  border: 4px solid white;
+  background-color: #ff5722;
+  color: #fff;
+  box-shadow: 0 5px 20px #000;
+  font-weight: bold;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.spin:active {
+  width: 70px;
+  height: 70px;
+  font-size: 20px;
+}
+
+.mainbox.animate:after {
+  animation: animateArrow 0.7s ease infinite;
+}
+
+audio {
+  display: none;
+}
+
+@keyframes animateArrow {
+  50% {
+    right: -50px;
+  }
+}
+
+@media (max-width: 576px) {
+  .mainbox {
+    width: 100%;
+    height: 50%;
+  }
+}
+
+</style>
+  
+  
+  <body>
+   
+    <center><h1> TOYS STORE </h1></center>
+    
+      <a href="/">
+    <buttonclass="btn btn-danger">BaCK tO HoMe</button>
+  </a> 
+ <div class="mainbox" id="mainbox">
+      <div class="box" id="box">
+        <div class="box1">
+          <span class="font span1"><b>Samsung Tab A6</b></span>
+          <span class="font span2"><b>JBL Speaker</b></span>
+          <span class="font span3"><b>Magic Roaster</b></span>
+          <span class="font span4"><b>Sepeda Aviator</b></span>
+          <span class="font span5"
+            ><b
+              >Rice Cooker <br />
+              Philips</b
+            ></span
+          >
+        </div>
+        <div class="box2">
+          <span class="font span1"><b>Lunch Box Lock&Lock</b></span>
+          <span class="font span2"
+            ><b
+              >Air Cooler <br />
+              Sanken</b
+            ></span
+          >
+          <span class="font span3"><b>Ipad Mini 4</b></span>
+          <span class="font span4"><b>Exclusive Gift</b></span>
+          <span class="font span5"
+            ><b
+              >Electrolux <br />
+              Blender</b
+            ></span
+          >
+        </div>
+      </div>
+      <button class="spin" onclick="spin()">SPIN</button>
+    </div>
+    <audio
+      controls="controls"
+      id="applause"
+      src="https://www.jqueryscript.net/demo/lucky-spin-random-wheel/applause.mp3"
+      type="audio/mp3"
+    ></audio>
+    <audio
+      controls="controls"
+      id="wheel"
+      src="https://www.jqueryscript.net/demo/lucky-spin-random-wheel/wheel.mp3"
+      type="audio/mp3"
+    ></audio>
+    
+ <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://www.jqueryscript.net/demo/lucky-spin-random-wheel/script.js"></script>
+   
+    
+<!--Start Please keep the Credits intact-->
+<div style='margin-top:300px; '> 
+<center>
+  <p class='author'>&#169; <b>Frinton Madtha Productions</b> Collaboration with<a href='https://frinmash.blogspot.com/'> FrinMash </a></p></center></div>
+
+
+  <b:section class='navbar' id='navbar' maxwidgets='1' showaddelement='no'/>
+
+<!-- End Please keep the Credits intact-->
+  </body> 
+</html>

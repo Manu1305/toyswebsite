@@ -1,0 +1,107 @@
+<link rel="stylesheet" type="text/css" href="userAssets/css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!--owl slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <!-- font awesome style -->
+  <link href="userAssets/css/font-awesome.min.css" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="userAssets/css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="userAssets/css/responsive.css" rel="stylesheet" />
+
+
+
+
+
+
+<style>.gradient-custom {
+/* fallback for old browsers */
+background: #6a11cb;
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+}</style>
+
+
+
+
+<section class="h-100 gradient-custom">
+  <div class="container py-5">
+    <div class="row d-flex justify-content-center my-4">
+      <div class="col-md-8">
+        <div class="card mb-4">
+          <div class="card-header py-3">
+            <h5 class="mb-0">Ordered products-</h5>
+         
+          </div>
+          <div class="card-body">
+            <!-- Single item -->
+            {{#each product}}
+            <div class="row">
+              <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                
+                <!-- Image -->
+                <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
+                  <img src="/product-images/{{this.product._id}}.jpg"
+                    class="w-100" alt="Blue Jeans Jacket" />
+                  <a href="#!">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+                  </a>
+                </div>
+                <!-- Image -->
+              </div>
+
+              <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+                <!-- Data -->
+                <p><strong>{{this.product.name}}</strong></p>
+                {{!-- <p>Color: blue</p>
+                <p>Size: M</p> --}}
+              
+                {{!-- <button type="button" class="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip"
+                  title="Move to the wish list">add to wishlist
+                  <i class="fas fa-heart"></i>
+                </button> --}}
+                <!-- Data -->
+              </div>
+
+              <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                <!-- Quantity -->
+                <div class="d-flex mb-4" style="max-width: 300px">
+                 
+                  
+
+                   {{!-- <div class="form-outline">
+                    <input id="form1" min="0" name="quantity" value="" type="number" class="form-control" />
+                    <label class="form-label" for="form1"></label>
+                  </div>  --}}
+
+                   
+                </div> 
+                <!-- Quantity -->
+
+                <!-- Price -->
+                <p class="text-start text-md-center">
+                  <strong>₹{{this.product.price}}</strong>
+                </p>
+                <!-- Price -->
+              </div>
+            </div>{{/each}}
+            <!-- Single item -->
+
+            <hr class="my-4" />
+
+            <!-- Single item -->
+            
+   
+    </div>
+  </div>
+</section>
+

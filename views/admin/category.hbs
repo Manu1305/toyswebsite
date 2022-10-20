@@ -1,0 +1,30 @@
+<section>
+  <div style="height: 200px; width:100%;"></div>
+<div class="container">
+    <div class="row">
+        <a href="/admin/addCategory" class="btn btn-success ">add New category</a>
+    </div>
+<table class="table-responsive">
+  <thead>
+    <tr>
+      <th scope="col">CATEGORY</th>
+     
+    </tr>
+  </thead>
+  <tbody> {{#each category}}
+    <tr>
+      <th scope="row">{{inc1 @index}}</th>
+      <td>{{this.categoryData.category}}</td>
+
+      
+      <td>
+         {{!-- <a href="/admin/edit-product?id={{this._id}}"class="btn btn-primary">Edit</a> --}}
+        <a href="/admin/deleteCategory/{{this._id}}"class="btn btn-danger" onclick="return confirm ('are you really want to delete{{this.category}} ? ')">Delete</a>
+     
+      </td>
+     
+    </tr> {{/each}}
+    
+  </tbody>
+</table></div>
+</section>

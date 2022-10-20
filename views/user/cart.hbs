@@ -1,0 +1,266 @@
+<link rel="stylesheet" type="text/css" href="userAssets/css/bootstrap.css" />
+
+<!-- fonts style -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<!--owl slider stylesheet -->
+<link rel="stylesheet" type="text/css"
+  href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+<!-- font awesome style -->
+<link href="userAssets/css/font-awesome.min.css" rel="stylesheet" />
+
+<!-- Custom styles for this template -->
+<link href="userAssets/css/style.css" rel="stylesheet" />
+<!-- responsive style -->
+<link href="userAssets/css/responsive.css" rel="stylesheet" />
+
+
+
+
+
+
+<style>
+  .gradient-custom {
+    /* fallback for old browsers */
+    background: #6a11cb;
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+  }
+</style>
+
+
+
+
+<section class="h-100 gradient-custom">
+  <div class="container py-5">
+    <div class="row d-flex justify-content-center my-4">
+      <div class="col-md-8">
+        <div class="card mb-4">
+          <div class="card-header py-3">
+            <h5 class="mb-0">Cart -</h5>
+          </div>
+          <div class="card-body">
+            <!-- Single item -->
+            {{#each products}}
+            <div class="row">
+              <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+
+                <!-- Image -->
+                <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
+                  <img src="/product-images/{{this.product._id}}.jpg" class="w-100" alt="Blue Jeans Jacket" />
+                  <a href="#!">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+                  </a>
+                </div>
+                <!-- Image -->
+              </div>
+
+              <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+                <!-- Data -->
+                <p><strong>{{this.product.name}}</strong></p>
+                {{!-- <p>Color: blue</p>
+                <p>Size: M</p> --}}
+                <button type="button" class="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
+                  onclick="removeProduct('{{this._id}}','{{this.product._id}}')" title="Remove item">remove
+                  <i class="fas fa-trash"></i>
+                </button>
+                {{!-- <button type="button" class="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip"
+                  title="Move to the wish list">add to wishlist
+                  <i class="fas fa-heart"></i>
+                </button> --}}
+                <!-- Data -->
+              </div>
+
+              <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                <!-- Quantity -->
+                <div class="d-flex mb-4" style="max-width: 300px">
+                  <button class="btn btn-danger px-3 me-2"
+                    onclick="changeQuantity('{{this._id}}','{{this.product._id}}',-1)">
+                    <i class="fas fa-minus"></i>
+                  </button><span class="border border-primary w-15 p-3"
+                    id="{{this.product._id}}">{{this.quantity}}</span>
+
+
+                  {{!-- <div class="form-outline">
+                    <input id="form1" min="0" name="quantity" value="" type="number" class="form-control" />
+                    <label class="form-label" for="form1"></label>
+                  </div> --}}
+
+                  <button class="btn btn-primary px-3 ms-2"
+                    onclick="changeQuantity('{{this._id}}','{{this.product._id}}',1)">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+                <!-- Quantity -->
+
+                <!-- Price -->
+                <p class="text-start text-md-center">
+                  <strong>₹{{this.product.price}}</strong>
+                </p>
+                <!-- Price -->
+              </div>
+            </div>{{/each}}
+            <!-- Single item -->
+
+            <hr class="my-4" />
+
+            <!-- Single item -->
+
+            <div class="card mb-4">
+              <div class="card-body">
+                <p><strong>Expected shipping delivery</strong></p>
+                <p class="mb-0">12.10.2020 - 14.10.2020</p>
+              </div>
+            </div>
+            <div class="card mb-4 mb-lg-0">
+              <div class="card-body">
+                <p><strong>We accept</strong></p>
+                <img class="me-2" width="45px"
+                  src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
+                  alt="Visa" />
+                <img class="me-2" width="45px"
+                  src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
+                  alt="American Express" />
+                <img class="me-2" width="45px"
+                  src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
+                  alt="Mastercard" />
+                <img class="me-2" width="45px"
+                  src="data:image/png;base64,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"
+                  alt="PayPal acceptance mark" />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card mb-4">
+              <div class="card-header py-3">
+                <h5 class="mb-0">Summary</h5>
+              </div>
+              <form action="" id="couponForm">
+                <div class="form-group"> <label>Have coupon?</label>
+
+                  <div class="input-group">
+                    <input type="text" class="form-control coupon" name="coupon" placeholder="Coupon code"> 
+                      <button type="submit" class="btn btn-primary btn-apply coupon">Apply</button>
+                    </span>
+                  </div>
+                </div>
+              </form>
+              <div class="card-body">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                    Products
+                    <span >₹{{total}}</span>
+                  </li>
+                   <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                    Discount
+                    <span id="discount">00</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                    Shipping
+                    <span>Gratis</span>
+                  </li>
+
+                  <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                    <div>
+                      <strong>Total amount</strong>
+                      <strong>
+                        <p class="mb-0">(including VAT)</p>
+                      </strong>
+                    </div>
+                    <span id="total"><strong>₹{{total }}</strong></span>
+                  </li>
+                </ul>
+
+                <a href='/payment'><button type="button" class="btn btn-success btn-lg btn-block">
+                    Go to checkout
+                  </button></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
+<script>
+
+  function changeQuantity(cartId, proId, count) {
+    let quantity = parseInt(document.getElementById(proId).innerHTML)
+    count = parseInt(count)
+    $.ajax({
+      url: '/change-product-quantity',
+      data: {
+        cart: cartId,
+        product: proId,
+        count: count,
+        quantity: quantity
+      },
+      method: 'post',
+      success: (response) => {
+        if (response.removeProduct) {
+          alert("removed")
+          location.reload()
+        } else {
+          document.getElementById(proId).innerHTML = quantity + count
+        }
+      }
+    })
+  }
+
+  function removeProduct(cartId, proId) {
+    $.ajax({
+      url: '/remove-from-cart',
+      data: {
+        cart: cartId,
+        product: proId
+      },
+      method: 'post',
+      success: (response) => {
+
+        alert("removed ")
+        location.reload()
+
+      }
+    })
+  }
+</script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  $('#couponForm').submit((e) => {
+    e.preventDefault();
+    $.ajax({
+      url: '/apply-coupon',
+      method: 'post',
+      data: $('#couponForm').serialize(),
+      success: (resource) => {
+        if (resource.status) {
+          swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Coupon Success',
+            showConfirmButton: false,
+            timer: 2000
+          })
+          document.getElementById('discount').innerHTML = resource.discountPrice
+          document.getElementById('total').innerHTML = resource.discountTotal
+
+        }
+        else {
+          swal.fire({
+            position: 'center',
+            icon: 'failed',
+            title: 'Invalid coupon 😔',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        }
+      }
+    })
+  })
+
+
+
+</script>

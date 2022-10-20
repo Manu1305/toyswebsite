@@ -1,0 +1,48 @@
+<section>
+  <div style="height: 200px; width:100%;"></div>
+<div class="container">
+    <div class="row">
+        <a href="/admin/addCoupon" class="btn btn-success ">add New Coupon</a>
+    </div>
+<table class="table-responsive" id="productsTable" style="padding: 50px;">
+  <thead>
+    <tr>
+        <th scope="col">NO.</th>
+      <th scope="col">COUPON</th>
+     <th scope="col">DISCOUNT</th>
+     <th scope="col">OPTIONS</th>
+    </tr>
+  </thead>
+  <tbody> {{#each coupon}}
+    <tr>
+      <th scope="row">{{inc1 @index}}</th>
+      <td>{{this.coupon.coupon}}</td>
+       <td>{{this.coupon.discount}}</td>
+
+      
+      <td>
+         {{!-- <a href="/admin/edit-product?id={{this._id}}"class="btn btn-primary">Edit</a> --}}
+        <a href="/admin/deleteCoupon/{{this._id}}"class="btn btn-danger" onclick="return confirm ('are you really want to delete{{this.coupon}} ? ')">Delete</a>
+     
+      </td>
+     
+    </tr> {{/each}}
+    
+  </tbody>
+</table></div>
+</section>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+  
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+<script>
+    $(document).ready(function () {
+
+
+        $('#productsTable').wrap('<div id="hide" style="display:none"/>');
+
+        $('#hide').css('display', 'block');
+    });
+
+
+    var table = $('#productsTable').DataTable();
+</script>

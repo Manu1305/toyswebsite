@@ -1,0 +1,122 @@
+
+
+
+
+
+
+
+
+<script src="https://kit.fontawesome.com/bdd3a18581.js" crossorigin="anonymous"></script>
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+
+
+ <link rel="stylesheet" type="text/css" href="/adminassets/template/css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <!--owl slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+  <!-- font awesome style -->
+  <link href="/adminassets/template/css/font-awesome.min.css" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="/adminassets/template/css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="/adminassets/template/css/responsive.css" rel="stylesheet" />
+
+
+    <title>Kiyara</title>
+</head>
+
+<body>
+    <script src="/javascripts/script.js"></script>
+    <header class="header_section " style="background-color: rgba(61,194,202,255);">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          
+          <a class="navbar-brand" href="/">
+            <span>
+              Kiyara
+            </span>
+          </a>
+
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> 
+               <span class=""></span>
+             </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  ">
+              <li class="nav-item ">
+                <a class="nav-link text-white" href="/">Home </a>
+              </li>
+              {{!-- <li class="nav-item">
+                <a class="nav-link text-white" href="/luckyspin"><img style="height: 20px;5px" src="https://c.tenor.com/c5pbbJejcg8AAAAj/%E0%B8%A7%E0%B8%87%E0%B8%A5%E0%B9%89%E0%B8%AD-spinning-wheel.gif">luckyspin</a>
+              </li> --}}
+              <li class="nav-item">
+               <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle border-0 "style="background-color: rgba(61,194,202,255); margin-top: -6px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img style="height: 20px;5px" src="https://c.tenor.com/Wbs9iNeXQWEAAAAC/game-zone.gif">
+    GAMEZONE
+  </button>
+  <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton" style="background-color: rgba(61,194,202,255);">
+    <a class="dropdown-item" href="/game">Menja </a>
+    <a class="dropdown-item" href="/game1">MaZe</a>
+    <a class="dropdown-item" href="#">Coming soon</a>
+  </div>
+</div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="/viewallproduct" >Shop</a>
+              </li>
+               <li class="nav-item">
+                <a class="nav-link text-white" href="/wishlist" >Wishlist</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="/orders" >orders
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="/cart" >cart<i class="fa-solid fa-cart-shopping"></i> <span class="badge badge-light" id="cart-count">{{cartCount}}
+                </span></a>
+              </li>
+              <li class="nav-item text-white">{{#if user}}
+                <a class="nav-link" href="/logout"> <i class="fa fa-user" aria-hidden="true"></i> logout</a>
+                {{else}}
+                <a class="nav-link" href="/login"> <i class="fa fa-user" aria-hidden="true"></i> logIn</a>
+                {{/if}}
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/userProfile" >  {{#if user}}<i class="fa fa-smile-o" aria-hidden="true"></i></i> {{user.name}}
+     {{else}}
+     <i class="fa fa-arrow-left" aria-hidden="true"></i>
+    {{/if}}</a>
+               
+              </li>
+              <form class="form-inline">
+                {{!-- <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button> --}}
+              </form>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+     
+</body>
+
+</html>
